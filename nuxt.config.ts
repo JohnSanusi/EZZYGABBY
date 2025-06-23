@@ -18,11 +18,11 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig:{
-    SMPT_HOST:'',
-    SMPT_USER:'',
-    SMPT_PASS: '',
-    SMPT_PORT: '',
-    CLIENT_EMAIL:'',
+    SMPT_HOST:process.env.SMPT_HOST,
+    SMPT_USER:process.env.SMPT_USER,
+    SMPT_PASS: process.env.SMPT_PASS,
+    SMPT_PORT: process.env.SMPT_PORT,
+    CLIENT_EMAIL:process.env.CLIENT_EMAIL,
     public: {}
   }
 })
