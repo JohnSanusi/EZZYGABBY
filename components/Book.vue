@@ -1,9 +1,9 @@
 <script setup>
 import { reactive, ref } from "vue";
-import { useNotivue } from "notivue";
+import { push,Notification} from "notivue";
 
-const toast = useNotivue();
-const formRef = ref(null);
+
+
 const isSending = ref(false);
 const formData = reactive({
   name: "",
@@ -31,7 +31,7 @@ const submitForm = async () => {
     bookingData.time === "" ||
     bookingData.type === ""
   ) {
-    toast.warning("Please fill all inputs");
+    push.warning("Please fill all inputs");
     return
   }
   isSending.value = true;
@@ -43,10 +43,10 @@ const submitForm = async () => {
   isSending.value = false;
 if(error.value){
   console.log(error.value);
-  toast.error("Booking failed, please try again ")
+  push.error("Booking failed, please try again ")
   
 }else if(data.value?.status === "success"){
-  toast.success("Booking successful, I'd get back to you soon")
+  push.success("Booking successful, I'd get back to you soon")
   formData.name =  "";
   formData.email = "";
   formData.date = "12/06/2025";
@@ -54,12 +54,15 @@ if(error.value){
   formData.options = "";
   formData.notes = "";
 }else{
-  toast.error("Error, form not functioning")
+  push.error("Error, form not functioning")
 }
  
 };
 </script>
 <template>
+     <Notivue v-slot="item" theme="dark" >
+    <Notification :item="item"  />
+   </Notivue>
   <section id="book" class="flex flex-col p-6 justify-center">
     <p
       class="text-white tracking-widest border border-green-500 cursor-pointer focus:ring-4 flex justify-center items-center font-medium rounded-3xl text-sm w-40 md:text-base px-2 py-2 text-center mb-2 self-center"
@@ -166,9 +169,9 @@ if(error.value){
           type="submit"
           :disabled="isSending"
          
-          class="text-white tracking-widest bg-green-500 hover:bg-green-600 hover:shadow-green-500/50 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 flex justify-center items-center font-medium rounded-xl text-base px-4 py-3 w-48 text-center transition-all duration-200 mr-4"
+          class="text-white tracking-widest bg-green-500 hover:bg-green-600 hover:shadow-green-500/50 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 flex justify-center items-center font-medium rounded-xl text-base px-4 py-3 w-36 text-center transition-all duration-200 mr-4"
         >
-          <i class="pi pi-send text-base mr-2"></i>
+          
           {{ isSending ? "Booking..." : "Book Event" }}
         </button>
       </form>

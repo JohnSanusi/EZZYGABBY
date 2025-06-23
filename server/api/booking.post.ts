@@ -11,7 +11,7 @@ import {H3Event, readBody} from "h3"
 
     const config = useRuntimeConfig()
 
-    const transporter = nodemailer.createTrasport({
+    const transporter = nodemailer.createTransport({
         host: config.SMPT_HOST,
         port: parseInt(config.SMPT_PORT),
         auth:{

@@ -1,4 +1,5 @@
 <template class="bg-slate-950">
+ 
   <NuxtPage />
 </template>
 <style>

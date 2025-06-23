@@ -1,8 +1,8 @@
 <script setup>
 import { reactive, ref } from "vue";
-import { useNotivue } from "notivue";
+import { push,Notification } from "notivue";
 
-const toast = useNotivue();
+
 
 const isSending = ref(false);
 const formData = reactive({
@@ -26,7 +26,7 @@ const submitForm = async () => {
     contactForm.subject === "" ||
     contactForm.message === ""
   ) {
-    toast.warning("please Fill all inputs");
+    push.warning("please Fill all inputs");
     return;
   }
   isSending.value = true;
@@ -38,21 +38,24 @@ const submitForm = async () => {
   isSending.value = false;
 if(error.value){
   console.log(error.value);
-  toast.error("Message not send, please try again ")
+  push.error("Message not send, please try again ")
   
 }else if(data.value?.status === "success"){
-  toast.success("Message sent successfully, I'd get back to you soon")
+  push.success("Message sent successfully, I'd get back to you soon")
   formData.name = "";
   formData.email = "";
   formData.subject = "";
   formData.message = "";
 }else{
-  toast.error("Error, form not functioning")
+  push.error("Error, form not functioning")
 }
  
 };
 </script>
 <template>
+   <Notivue v-slot="item" theme="white" >
+    <Notification :item="item"  />
+   </Notivue>
   <section id="contact" class="p-6 flex flex-col gap-4">
     <p
       class="text-white tracking-widest border border-green-500 cursor-pointer focus:ring-4 flex justify-center items-center font-medium rounded-3xl text-sm w-40 md:text-base px-2 py-2 text-center mb-2 self-center"
