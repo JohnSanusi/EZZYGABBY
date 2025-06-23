@@ -1,8 +1,8 @@
 <script setup>
 import { reactive, ref } from "vue";
-import { useToast } from "vue-toastification";
+import { useNotivue } from "notivue";
 
-const toast = useToast();
+const toast = useNotivue();
 
 const isSending = ref(false);
 const formData = reactive({

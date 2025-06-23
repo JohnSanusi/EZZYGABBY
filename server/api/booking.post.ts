@@ -15,7 +15,7 @@ import {H3Event, readBody} from "h3"
         host: config.SMPT_HOST,
         port: parseInt(config.SMPT_PORT),
         auth:{
-            user: config.SMPT_USER,
+            user: config.SMPT_USER, 
             pass: config.SMPT_PASS
         }
     })
