@@ -1,8 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { reactive, ref } from "vue";
-import { push,Notification } from "notivue";
-
-
+import { push, Notification } from "notivue";
+import { useContactForm } from "~/composables/useContactForm";
 
 const isSending = ref(false);
 const formData = reactive({
@@ -11,6 +10,7 @@ const formData = reactive({
   subject: "",
   message: "",
 });
+const { sendContactForm } = useContactForm();
 
 const submitForm = async () => {
   const contactForm = {
@@ -31,31 +31,31 @@ const submitForm = async () => {
   }
   isSending.value = true;
 
-  const {data, error} = await useFetch("/api/contact", {
-    method: 'post',
-    body: contactForm
-  })
-  isSending.value = false;
-if(error.value){
-  console.log(error.value);
-  push.error("Message not send, please try again ")
-  
-}else if(data.value?.status === "success"){
-  push.success("Message sent successfully, I'd get back to you soon")
-  formData.name = "";
-  formData.email = "";
-  formData.subject = "";
-  formData.message = "";
-}else{
-  push.error("Error, form not functioning")
-}
- 
+  try {
+    sendContactForm({ ...contactForm });
+    push.success({
+      title: "Message Sent",
+      message: "Thanks for reaching out",
+    });
+
+    formData.name = "";
+    formData.email = "";
+    formData.subject = "";
+    formData.message = "";
+  } catch (err: any) {
+    push.error({
+      title: "Failed to send",
+      message: "Something went wrong, try again",
+    });
+  } finally {
+    isSending.value = false;
+  }
 };
 </script>
 <template>
-   <Notivue v-slot="item" theme="white" >
-    <Notification :item="item"  />
-   </Notivue>
+  <Notivue v-slot="item" theme="white">
+    <Notification :item="item" />
+  </Notivue>
   <section id="contact" class="p-6 flex flex-col gap-4">
     <p
       class="text-white tracking-widest border border-green-500 cursor-pointer focus:ring-4 flex justify-center items-center font-medium rounded-3xl text-sm w-40 md:text-base px-2 py-2 text-center mb-2 self-center"
@@ -69,13 +69,12 @@ if(error.value){
           width="600"
           height="450"
           style="border: 0"
-          allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           class="w-full rounded-lg"
         ></iframe>
       </div>
-      <form @submit.prevent="submitForm"  class="flex flex-col gap-4 text-white">
+      <form @submit.prevent="submitForm" class="flex flex-col gap-4 text-white">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           <div class="w-full">
             <label for="name" class="text-lg tracking-normal font-semibold"
@@ -133,7 +132,6 @@ if(error.value){
         <button
           type="submit"
           :disabled="isSending"
-          
           class="text-white tracking-widest bg-green-500 hover:bg-green-600 hover:shadow-green-500/50 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 flex justify-center items-center font-medium rounded-xl text-base px-4 py-3 w-48 text-center transition-all duration-200 mr-4"
         >
           <i class="pi pi-send text-base mr-2"></i>

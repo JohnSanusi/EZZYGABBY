@@ -1,47 +1,51 @@
-import nodemailer from 'nodemailer'
-import {H3Event, readBody} from "h3"
+import nodemailer from "nodemailer";
 
- export default defineEventHandler( async (event:H3Event) => {
-    const body = await readBody(event)
-    const {name, email, date,time,options, notes} = body;
+export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig();
+  const body = await readBody(event);
+  const { name, email, date, time, options, notes } = body;
 
-    if(!name || !email || !date || !time || !options || !notes){
-        return {status: 'error', message:"Please fill in all inputs"}
-    }
+  if (!name || !email || !date || !time || !options || !notes) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Please fill in all inputs",
+    });
+  }
 
-    const config = useRuntimeConfig()
+  const transporter = nodemailer.createTransport({
+    host: config.smtpHost,
+    port: config.smtpPort,
+    secure: false,
+    auth: {
+      user: config.smtpUser,
+      pass: config.smtpPass,
+    },
+  });
 
-    const transporter = nodemailer.createTransport({
-        host: config.SMPT_HOST,
-        port: parseInt(config.SMPT_PORT),
-        auth:{
-            user: config.SMPT_USER, 
-            pass: config.SMPT_PASS
-        }
-    })
-
-    const bookingBody = `
+  const bookingBody = `
     Name: ${name},
     Email: ${email},
     Date: ${date},
     Time: ${time},
     Service: ${options},
     Message: ${notes},
-    `
+    `;
 
-    const mailOptions = {
-        from : "EazzyGabby Booking Bot ",
-        to:config.CLIENT_EMAIL,
-        subject: "New Booking ",
-        text: bookingBody
-    }
+  const mailOptions = {
+    from: "EazzyGabby Booking Bot ",
+    to: config.clientEmail,
+    subject: "New Booking ",
+    text: bookingBody,
+  };
 
-    try {
-        await transporter.sendMail(mailOptions)
-        return{status:'success', message: 'Email sent successfully'}
-    } catch (error) {
-        console.error('Email error', error)
-        return{ status: 'Error', message:"Email failed to send"}
-    }
- })   
-
+  try {
+    await transporter.sendMail(mailOptions);
+    return { status: "success", message: "Email sent successfully" };
+  } catch (err: any) {
+    console.error("Email error", err);
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Failed to send message",
+    });
+  }
+});

@@ -1,8 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { reactive, ref } from "vue";
-import { push,Notification} from "notivue";
-
-
+import { push, Notification } from "notivue";
+import { useBookingForm } from "~/composables/useBookingForm";
 
 const isSending = ref(false);
 const formData = reactive({
@@ -13,6 +12,7 @@ const formData = reactive({
   options: "",
   notes: "",
 });
+const { sendBookingForm } = useBookingForm();
 
 const submitForm = async () => {
   const bookingData = {
@@ -20,7 +20,7 @@ const submitForm = async () => {
     email: formData.email,
     date: formData.date,
     time: formData.time,
-    type: formData.options,
+    options: formData.options,
     notes: formData.notes,
   };
 
@@ -29,40 +29,39 @@ const submitForm = async () => {
     bookingData.email === "" ||
     bookingData.date === "" ||
     bookingData.time === "" ||
-    bookingData.type === ""
+    bookingData.options === ""
   ) {
     push.warning("Please fill all inputs");
-    return
+    return;
   }
   isSending.value = true;
+  try {
+    sendBookingForm({ ...bookingData });
+    push.success({
+      title: "Booking Successful",
+      message: "I'd get back to you soon",
+    });
 
-  const {data, error} = await useFetch("/api/booking", {
-    method: 'post',
-    body: bookingData
-  })
-  isSending.value = false;
-if(error.value){
-  console.log(error.value);
-  push.error("Booking failed, please try again ")
-  
-}else if(data.value?.status === "success"){
-  push.success("Booking successful, I'd get back to you soon")
-  formData.name =  "";
-  formData.email = "";
-  formData.date = "12/06/2025";
-  formData.time = "12:00";
-  formData.options = "";
-  formData.notes = "";
-}else{
-  push.error("Error, form not functioning")
-}
- 
+    formData.name = "";
+    formData.email = "";
+    formData.date = "12/06/2025";
+    formData.time = "12:00";
+    formData.options = "";
+    formData.notes = "";
+  } catch (err: any) {
+    push.error({
+      title: "Booking Failed",
+      message: "Something went wrong, try again",
+    });
+  } finally {
+    isSending.value = false;
+  }
 };
 </script>
 <template>
-     <Notivue v-slot="item" theme="dark" >
-    <Notification :item="item"  />
-   </Notivue>
+  <Notivue v-slot="item" theme="dark">
+    <Notification :item="item" />
+  </Notivue>
   <section id="book" class="flex flex-col p-6 justify-center">
     <p
       class="text-white tracking-widest border border-green-500 cursor-pointer focus:ring-4 flex justify-center items-center font-medium rounded-3xl text-sm w-40 md:text-base px-2 py-2 text-center mb-2 self-center"
@@ -70,7 +69,7 @@ if(error.value){
       Book An Event
     </p>
     <div class="p-2 mt-4 text-white">
-      <form  @submit.prevent="submitForm" class="flex flex-col gap-4">
+      <form @submit.prevent="submitForm" class="flex flex-col gap-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           <div class="w-full">
             <label for="name" class="text-lg tracking-normal font-semibold"
@@ -168,10 +167,8 @@ if(error.value){
         <button
           type="submit"
           :disabled="isSending"
-         
           class="text-white tracking-widest bg-green-500 hover:bg-green-600 hover:shadow-green-500/50 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 flex justify-center items-center font-medium rounded-xl text-base px-4 py-3 w-36 text-center transition-all duration-200 mr-4"
         >
-          
           {{ isSending ? "Booking..." : "Book Event" }}
         </button>
       </form>

@@ -1,38 +1,42 @@
-import nodemailer from 'nodemailer'
-import {H3Event, readBody} from "h3"
+import nodemailer from "nodemailer";
 
- export default defineEventHandler( async (event:H3Event) => {
-    const body = await readBody(event)
-    const {name, email, subject, message} = body;
+export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig;
+  const body = await readBody(event);
+  const { name, email, subject, message } = body;
 
-    if(!name || !email || !subject || !message){
-        return {status: 'error', message:"Please fill in all inputs"}
-    }
+  if (!name || !email || !subject || !message) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Please fill in all inputs",
+    });
+  }
 
-    const config = useRuntimeConfig()
+  const transporter = nodemailer.createTransport({
+    host: config.smtpHost,
+    port: config.smtpPort,
+    secure: false,
+    auth: {
+      user: config.smtpUser,
+      pass: config.smtpPass,
+    },
+  });
 
-    const transporter = nodemailer.createTransport({
-        host: config.SMPT_HOST,
-        port: parseInt(config.SMPT_PORT),
-        auth:{
-            user: config.SMPT_USER,
-            pass: config.SMPT_PASS
-        }
-    })
+  const mailOptions = {
+    from: `"${name}" <${email}>`,
+    to: config.clientEmail,
+    subject: subject,
+    text: message,
+  };
 
-    const mailOptions = {
-        from : `"${name}" <${email}>`,
-        to:config.CLIENT_EMAIL,
-        subject: subject,
-        text: message
-    }
-
-    try {
-        await transporter.sendMail(mailOptions)
-        return{status:'success', message: 'Email sent successfully'}
-    } catch (error) {
-        console.error('Email error', error)
-        return{ status: 'Error', message:"Email failed to send"}
-    }
- })   
-
+  try {
+    await transporter.sendMail(mailOptions);
+    return { status: "success", message: "Email sent successfully" };
+  } catch (err: any) {
+    console.error("Email error", err);
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Failed to send message",
+    });
+  }
+});

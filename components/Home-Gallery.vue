@@ -30,7 +30,7 @@ const images = [
         <NuxtImg
           :src="image"
           alt=""
-          class="w-full h-[23rem] md:h-[29rem] lg:h-[30rem] rounded-xl"
+          class="w-full h-[25rem] md:h-[29rem] lg:h-[30rem] rounded-xl"
         />
       </div>
     </div>
