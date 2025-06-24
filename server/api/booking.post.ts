@@ -40,7 +40,10 @@ export default defineEventHandler(async (event) => {
   };
 
   try {
-    await transporter.sendMail(mailOptions);
+    const info = await 
+     transporter.sendMail(mailOptions);
+      console.log("Email info" info);
+
     return { status: "success", message: "Email sent successfully" };
   } catch (err: any) {
     console.error("Email error", err);
