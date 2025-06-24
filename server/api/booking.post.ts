@@ -23,6 +23,7 @@ export default defineEventHandler(async (event) => {
   });
 
   const bookingBody = `
+  New Booking Recieved
     Name: ${name},
     Email: ${email},
     Date: ${date},
@@ -32,7 +33,7 @@ export default defineEventHandler(async (event) => {
     `;
 
   const mailOptions = {
-    from: "EazzyGabby Booking Bot ",
+    from: `"EazzyGabby Booking Bot "<${config.smtpUser}>`,
     to: config.clientEmail,
     subject: "New Booking ",
     text: bookingBody,

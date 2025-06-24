@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig;
+  const config = useRuntimeConfig();
   const body = await readBody(event);
   const { name, email, subject, message } = body;
 
