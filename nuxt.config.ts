@@ -14,11 +14,11 @@ export default defineNuxtConfig({
   },
   notivue: {},
   runtimeConfig: {
-    smtpHost: "",
+    smtpHost: process.env.SMTP_HOST,
     smtpPort: 587,
-    smtpPass: "",
-    smtpUser: "",
-    clientEmail: "",
+    smtpPass: process.env.SMTP_PASS,
+    smtpUser: process.env.SMTP_USER,
+    clientEmail:process.env.CLIENT_EMAIL,
     public: {},
   },
 });
