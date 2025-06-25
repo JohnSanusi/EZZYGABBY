@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
   });
 
   const mailOptions = {
-    from: `"${name}" <${config.smtpUser}>`,
+    from: `"EazzyGabby Form Bot" <sanusijohn0@gmail.com>`,
     to: config.clientEmail,
     subject: subject,
     text: message,
