@@ -14,7 +14,7 @@ export const useBookingForm = () => {
     options: string;
     notes: string;
   }) => {
-    const { data, error } = await useFetch("/api/booking", {
+    const { data, error } = await $fetch("/api/booking", {
       method: "POST",
       body: {
         name,

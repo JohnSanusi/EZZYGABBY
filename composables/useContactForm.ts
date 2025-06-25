@@ -10,7 +10,7 @@ export const useContactForm = () => {
     subject: string;
     message: string;
   }) => {
-    const { data, error } = await useFetch("/api/contact", {
+    const { data, error } = await $fetch("/api/contact", {
       method: "POST",
       body: {
         name,

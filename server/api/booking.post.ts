@@ -1,7 +1,11 @@
 import nodemailer from "nodemailer";
 
 export default defineEventHandler(async (event) => {
+  console.log("booking end point HIT ");
+  
   const config = useRuntimeConfig();
+  console.log("config", config);
+  
   const body = await readBody(event);
   const { name, email, date, time, options, notes } = body;
 
@@ -42,7 +46,7 @@ export default defineEventHandler(async (event) => {
   try {
     const info = await 
      transporter.sendMail(mailOptions);
-      console.log("Email info" info);
+      console.log("Email info", info);
 
     return { status: "success", message: "Email sent successfully" };
   } catch (err: any) {
