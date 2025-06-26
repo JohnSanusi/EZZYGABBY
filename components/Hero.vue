@@ -79,7 +79,7 @@ const images = [
         :extensions="{ AutoScroll }"
       >
         <SplideSlide v-for="(image, index) in images" :key="index">
-          <NuxtImg :src="image" alt="" class="w-36 h-30 md:w-4xl md:h-58"
+          <NuxtImg :src="image" alt="" class="w-38 h-30 md:w-4xl md:h-58"
         /></SplideSlide>
       </Splide>
     </div>

@@ -1,75 +1,20 @@
-# Nuxt Minimal Starter
+# EazzyGabby Photography Website
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A sleek, fully responsive photography portfolio and event booking website built with **Nuxt 3**, styled using **Tailwind CSS**, and powered by a custom **Express backend for email booking**
 
-## Setup
+---
 
-Make sure to install dependencies:
+## Features
 
-```bash
-# npm
-npm install
+- Clean Ui showcasing photography work
+- Booking and Contact forms
+- send booking requests and messages directly via email (Nodemailer)
+- Form validation with toast feedback using notivue
+- Fully responsive across all devices
 
-# pnpm
-pnpm install
+## Tech Stack
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Nuxt 3
+- Tailwind CSS
+- Express.js
+- Nodemailer
