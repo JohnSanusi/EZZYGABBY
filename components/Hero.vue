@@ -1,7 +1,17 @@
 <script setup>
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-const images = ["/img-2.jpeg", "/img-3.jpeg", "/img-5.jpg", "/img-8.jpeg"];
+const images = [
+  "/img-29.jpg",
+  "/img-2.jpeg",
+  "/img-30.jpg",
+  "/img-3.jpeg",
+  "/img-31.jpg",
+  "/img-5.jpg",
+  "/img-32.jpg",
+  "/img-8.jpeg",
+  "/img-33.jpg",
+];
 </script>
 <template>
   <section id="hero" class="flex flex-col lg:flex-row gap-4 mt-32 p-6">
