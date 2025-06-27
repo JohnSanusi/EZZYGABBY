@@ -11,6 +11,9 @@ const images = [
   "/img-17.jpg",
   "/img-25.jpeg",
   "/img-26.jpeg",
+  "/img-47.jpg",
+  "/img-48.jpg",
+  "/img-49.jpg",
 ];
 </script>
 <template>
@@ -42,7 +45,7 @@ const images = [
         data-aos="fade-in"
         data-aos-duration="1000"
         to="/gallery"
-        class="text-white tracking-widest border border-green-500 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 md:flex lg:flex font-medium rounded-lg text-base px-4 py-3 md:w-40 text-center hover:bg-green-400 transition-all duration-200"
+        class="text-white tracking-widest border border-green-500 cursor-pointer flex justify-center items-center font-medium rounded-lg text-base px-4 py-3 md:w-40 text-center hover:bg-green-400 transition-all duration-200"
       >
         View More <i class="pi pi-arrow-right text-base ml-2"></i>
       </NuxtLink>

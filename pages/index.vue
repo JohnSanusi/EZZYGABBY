@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-  title: "Eazzy Gabby Photography | Capture Your Moents",
+  title: "Eazzy Gabby Photography ",
   meta: [
     {
       name: "description",
