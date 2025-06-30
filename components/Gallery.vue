@@ -89,18 +89,20 @@ const images = [
 </script>
 <template>
   <section id="gallery" class="mt-20 p-6 flex flex-col text-white">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+    <div
+      class="flex flex-wrap flex-col justify-center md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 p-4"
+    >
       <div
         v-for="(image, index) in images"
         :key="index"
         class="overflow-hidden rounded-xl"
+        data-aos="fade-in"
+        data-aos-duration="1000"
       >
         <NuxtImg
-          data-aos="fade-in"
-          data-aos-duration="1000"
           :src="image"
           alt=""
-          class="w-full h-[26rem] md:h-[29rem] lg:h-[20rem] rounded-xl"
+          class="w-full rounded-xl object-cover md:h-[27rem] lg:h-[20rem]"
         />
       </div>
     </div>

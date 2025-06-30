@@ -1,6 +1,4 @@
 <script setup>
-
-
 const images = [
   "/img-77.jpg",
   "/img-34.jpg",
@@ -29,7 +27,9 @@ const images = [
     >
       Gallery
     </p>
-    <div class="flex flex-wrap flex-col  justify-center md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 ">
+    <div
+      class="flex flex-wrap flex-col justify-center md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 p-4"
+    >
       <div
         v-for="(image, index) in images"
         :key="index"
@@ -40,7 +40,7 @@ const images = [
         <NuxtImg
           :src="image"
           alt=""
-          class="w-full rounded-xl object-cover  md:h-[29rem] lg:h-[20rem] "
+          class="w-full rounded-xl object-cover md:h-[27rem] lg:h-[20rem]"
         />
       </div>
     </div>
