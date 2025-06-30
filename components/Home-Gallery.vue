@@ -1,13 +1,16 @@
 <script setup>
-import { LazyNuxtImg } from "#components";
+
 
 const images = [
+  "/img-77.jpg",
   "/img-34.jpg",
   "/img-35.jpg",
   "/img-20.jpeg",
   "/img-4.jpeg",
   "/img-9.jpeg",
   "/img-36.jpg",
+  "/img-78.jpg",
+  "/img-79.jpg",
   "/img-17.jpg",
   "/img-25.jpeg",
   "/img-26.jpeg",

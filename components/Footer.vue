@@ -3,7 +3,7 @@
   <footer
     class="bg-slate-900 text-white flex flex-col justify-center items-center p-4 gap-3"
   >
-    <p>&copy; 2025 EazzyGabby. All rights reserved</p>
+    <p>&copy; 2025 EzzyGabby. All rights reserved</p>
     <div class="grid grid-cols-5 gap-3">
       <a
         href="mailto:Bymini2007@gmail.com"

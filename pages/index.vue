@@ -1,11 +1,11 @@
 <script setup>
 useHead({
-  title: "Eazzy Gabby Photography ",
+  title: "Ezzy Gabby Photography ",
   meta: [
     {
       name: "description",
       content:
-        "Book stunning photoshoots with EazzyGabby Photography. Weddings, birthdays, events, potraits and more...",
+        "Book stunning photoshoots with EzzyGabby Photography. Weddings, birthdays, events, potraits and more...",
     },
     {
       name: "keywords",
@@ -13,7 +13,7 @@ useHead({
     },
     {
       name: "author",
-      content: "EazzyGabby",
+      content: "EzzyGabby",
     },
     {
       name: "robots",
@@ -21,7 +21,7 @@ useHead({
     },
     {
       property: "og:title",
-      content: "EazzyGabby Photography",
+      content: "EzzyGabby Photography",
     },
     {
       property: "og:description",
@@ -29,7 +29,7 @@ useHead({
     },
     {
       property: "og:url",
-      content: "https://eazzygabby.vercel.app",
+      content: "https://ezzygabby.vercel.app",
     },
     {
       property: "og:type",
@@ -39,7 +39,7 @@ useHead({
   link: [
     {
       rel: "canonical",
-      href: "https://eazzygabby.vercel.app",
+      href: "https://ezzygabby.vercel.app",
     },
   ],
 });
