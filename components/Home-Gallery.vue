@@ -17,6 +17,7 @@ const images = [
   "/img-47.jpg",
   "/img-48.jpg",
   "/img-49.jpg",
+  "/img-50.jpg",
 ];
 </script>
 <template>
@@ -28,7 +29,7 @@ const images = [
     >
       Gallery
     </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+    <div class="flex flex-wrap flex-col  justify-center md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 ">
       <div
         v-for="(image, index) in images"
         :key="index"
@@ -39,7 +40,7 @@ const images = [
         <NuxtImg
           :src="image"
           alt=""
-          class="w-full h-[26rem] md:h-[29rem] lg:h-[30rem] rounded-xl"
+          class="w-full rounded-xl object-cover  md:h-[29rem] lg:h-[20rem] "
         />
       </div>
     </div>

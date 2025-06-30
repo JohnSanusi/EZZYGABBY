@@ -89,7 +89,7 @@ const images = [
 </script>
 <template>
   <section id="gallery" class="mt-20 p-6 flex flex-col text-white">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
       <div
         v-for="(image, index) in images"
         :key="index"
@@ -100,7 +100,7 @@ const images = [
           data-aos-duration="1000"
           :src="image"
           alt=""
-          class="w-full h-[26rem] md:h-[29rem] lg:h-[30rem] rounded-xl"
+          class="w-full h-[26rem] md:h-[29rem] lg:h-[20rem] rounded-xl"
         />
       </div>
     </div>
