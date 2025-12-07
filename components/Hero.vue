@@ -10,7 +10,7 @@ const images = [
 </script>
 
 <template>
-  <section class="relative h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+  <section class="relative h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden mt-20">
     <!-- Ambient background effects -->
     <div class="absolute inset-0 opacity-30">
       <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-emerald-500/20 blur-3xl rounded-full"></div>
@@ -33,8 +33,8 @@ const images = [
               </span>
             </div>
             
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-              <span class="block text-white mb-2">Time Fades,</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+              <span class="block text-white mb-1">Time Fades,</span>
               <span class="block bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
                 My Shots Don't.
               </span>
