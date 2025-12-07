@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Sitemap:
+https://eazzygabby.vercel.app/sitemap.xml

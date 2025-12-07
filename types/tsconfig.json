@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "types": ["@types/node"]
+  },
+  "include": ["types", "nuxt.config.ts", "**/*.ts", "**/*.vue"]
+}
