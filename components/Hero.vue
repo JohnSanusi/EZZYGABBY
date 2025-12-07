@@ -62,21 +62,7 @@ const images = [
             </a>
           </div>
           
-          <!-- Stats -->
-          <div class="flex gap-8 pt-4">
-            <div>
-              <div class="text-3xl font-bold text-white">500+</div>
-              <div class="text-sm text-slate-400">Events Captured</div>
-            </div>
-            <div>
-              <div class="text-3xl font-bold text-white">1000+</div>
-              <div class="text-sm text-slate-400">Happy Clients</div>
-            </div>
-            <div>
-              <div class="text-3xl font-bold text-white">5★</div>
-              <div class="text-sm text-slate-400">Rated Service</div>
-            </div>
-          </div>
+          
         </div>
 
         <!-- Modern Bento Grid -->
