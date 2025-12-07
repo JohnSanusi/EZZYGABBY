@@ -1,9 +1,11 @@
 <script setup></script>
+
 <template>
   <NuxtLink
     to="/"
-    class="text-white text-lg tracking-widest bg-green-500 hover:bg-green-600 hover:shadow-green-500/50 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 flex justify-center items-center font-medium rounded-lg px-3 py-2 w-26 text-center transition-all duration-200 mb-10 fixed top-10 left-10 z-95"
+    class="group fixed top-6 left-6 z-50 flex items-center gap-2 px-5 py-3 bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 hover:border-emerald-500 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-x-1"
   >
-    <i class="pi pi-arrow-left mr-1"></i> Back
+    <i class="pi pi-arrow-left text-base text-emerald-400 group-hover:-translate-x-1 transition-transform duration-300"></i>
+    <span>Back</span>
   </NuxtLink>
 </template>
