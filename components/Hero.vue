@@ -6,124 +6,146 @@ const images = [
   "/img-3.jpeg",
   "/img-31.jpg",
   "/img-5.jpg",
-  "/img-32.jpg",
-  "/img-8.jpeg",
 ];
 </script>
+
 <template>
-  <section id="hero" class="relative flex flex-col lg:flex-row gap-6 lg:gap-8 mt-24 px-6 py-4 lg:py-6 min-h-[85vh] lg:min-h-[90vh]">
-    <!-- Text Content -->
-    <div class="w-full lg:w-[42%] flex flex-col justify-center z-10">
-      <h1
-        class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl flex flex-col tracking-tight text-white font-black mb-4 leading-[1.1]"
-        data-aos="fade-down"
-        data-aos-duration="1000"
-      >
-        <span>Time Fades</span>
-        <span class="bg-gradient-to-r from-green-400 via-green-500 to-green-600 bg-clip-text text-transparent drop-shadow-lg"> My Shots Don't.</span>
-      </h1>
-      <p
-        class="text-gray-300 text-base md:text-lg lg:text-xl tracking-wide mb-6 leading-relaxed max-w-xl"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-      >
-        I don't just take pictures - I capture Vibes. <br />
-        Weddings, portraits, and raw moments you'll never forget
-      </p>
-      <div
-        class="flex flex-row gap-4 items-center flex-wrap"
-        data-aos="fade-in"
-        data-aos-duration="1000"
-      >
-        <NuxtLink
-          to="/gallery"
-          class="text-white tracking-wide border-2 border-green-500 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 font-semibold rounded-xl text-sm md:text-base px-7 py-3.5 text-center hover:bg-green-500 hover:border-green-500 transition-all duration-300 shadow-lg shadow-green-500/20 hover:shadow-green-500/40"
+  <section class="relative min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+    <!-- Ambient background effects -->
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-emerald-500/20 blur-3xl rounded-full"></div>
+      <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-green-500/10 blur-3xl rounded-full"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 py-20 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Text Content -->
+        <div 
+          class="space-y-8 lg:pr-8"
+          data-aos="fade-right"
+          data-aos-duration="1000"
         >
-          View My Work
-        </NuxtLink>
-        <a
-          href="#contact"
-          class="text-white tracking-wide bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 hover:shadow-xl hover:shadow-green-500/60 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 font-semibold rounded-xl text-sm md:text-base px-7 py-3.5 text-center transition-all duration-300 shadow-lg hover:-translate-y-0.5"
+          <div class="space-y-4">
+            <div class="inline-block">
+              <span class="px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-sm font-medium backdrop-blur-sm">
+                Professional Photography
+              </span>
+            </div>
+            
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+              <span class="block text-white mb-2">Time Fades,</span>
+              <span class="block bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 bg-clip-text text-transparent">
+                My Shots Don't.
+              </span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-xl">
+              I don't just take pictures — I capture vibes. Weddings, portraits, and raw moments you'll never forget.
+            </p>
+          </div>
+          
+          <div class="flex flex-wrap gap-4">
+            <NuxtLink
+              to="/gallery"
+              class="group relative px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/50 hover:-translate-y-0.5"
+            >
+              View My Work
+              <span class="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            </NuxtLink>
+            
+            <a
+              href="#contact"
+              class="px-8 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-emerald-500/50 text-white font-semibold rounded-xl transition-all duration-300"
+            >
+              Contact Me
+            </a>
+          </div>
+          
+          <!-- Stats -->
+          <div class="flex gap-8 pt-4">
+            <div>
+              <div class="text-3xl font-bold text-white">500+</div>
+              <div class="text-sm text-slate-400">Events Captured</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">1000+</div>
+              <div class="text-sm text-slate-400">Happy Clients</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-white">5★</div>
+              <div class="text-sm text-slate-400">Rated Service</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modern Bento Grid -->
+        <div 
+          class="relative"
+          data-aos="fade-left"
+          data-aos-duration="1000"
         >
-          Contact Me
-        </a>
+          <!-- Glow effect behind grid -->
+          <div class="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-green-500/20 blur-3xl opacity-30 animate-pulse"></div>
+          
+          <div class="relative grid grid-cols-6 grid-rows-6 gap-3 h-[500px] lg:h-[600px]">
+            <!-- Large featured image - top left -->
+            <div class="col-span-4 row-span-4 rounded-2xl overflow-hidden group relative bg-slate-800">
+              <NuxtImg
+                :src="images[0]"
+                alt="Featured"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div class="absolute bottom-4 left-4 text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                Wedding Collection
+              </div>
+            </div>
+
+            <!-- Tall image - top right -->
+            <div class="col-span-2 row-span-3 rounded-2xl overflow-hidden group relative bg-slate-800">
+              <NuxtImg
+                :src="images[1]"
+                alt="Portrait"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+
+            <!-- Bottom row - three images -->
+            <div class="col-span-2 row-span-2 rounded-2xl overflow-hidden group relative bg-slate-800">
+              <NuxtImg
+                :src="images[2]"
+                alt="Event"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+
+            <div class="col-span-2 row-span-3 rounded-2xl overflow-hidden group relative bg-slate-800">
+              <NuxtImg
+                :src="images[3]"
+                alt="Portrait"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+
+            <div class="col-span-2 row-span-2 rounded-2xl overflow-hidden group relative bg-slate-800">
+              <NuxtImg
+                :src="images[4]"
+                alt="Moment"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Enhanced Bento Grid -->
-    <div
-      class="w-full lg:w-[58%] mt-6 lg:mt-0"
-      data-aos="fade-left"
-      data-aos-duration="1000"
-    >
-      <div class="grid grid-cols-8 gap-2 md:gap-3 h-[450px] md:h-[550px] lg:h-[650px]">
-        <!-- Large hero image - dominant focal point -->
-        <div class="col-span-5 row-span-6 overflow-hidden rounded-3xl group relative shadow-2xl">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <NuxtImg
-            :src="images[0]"
-            alt="Featured photography"
-            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 brightness-95 group-hover:brightness-100"
-          />
-        </div>
-        
-        <!-- Right column - stacked medium images -->
-        <div class="col-span-3 row-span-3 overflow-hidden rounded-2xl group relative shadow-xl">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <NuxtImg
-            :src="images[1]"
-            alt="Photography sample"
-            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 brightness-95 group-hover:brightness-100"
-          />
-        </div>
-        
-        <div class="col-span-3 row-span-3 overflow-hidden rounded-2xl group relative shadow-xl">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <NuxtImg
-            :src="images[2]"
-            alt="Photography sample"
-            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 brightness-95 group-hover:brightness-100"
-          />
-        </div>
-        
-        <!-- Bottom row - small accent images -->
-        <div class="col-span-2 row-span-2 overflow-hidden rounded-xl group relative shadow-lg">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <NuxtImg
-            :src="images[3]"
-            alt="Photography sample"
-            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 brightness-95 group-hover:brightness-100"
-          />
-        </div>
-        
-        <div class="col-span-2 row-span-2 overflow-hidden rounded-xl group relative shadow-lg">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <NuxtImg
-            :src="images[4]"
-            alt="Photography sample"
-            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 brightness-95 group-hover:brightness-100"
-          />
-        </div>
-        
-        <div class="col-span-2 row-span-2 overflow-hidden rounded-xl group relative shadow-lg">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <NuxtImg
-            :src="images[5]"
-            alt="Photography sample"
-            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 brightness-95 group-hover:brightness-100"
-          />
-        </div>
-        
-        <div class="col-span-2 row-span-2 overflow-hidden rounded-xl group relative shadow-lg">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <NuxtImg
-            :src="images[6]"
-            alt="Photography sample"
-            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 brightness-95 group-hover:brightness-100"
-          />
-        </div>
-      </div>
-    </div>
+    <!-- Bottom fade -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 to-transparent"></div>
   </section>
-</template>
+</template>  
 
