@@ -36,7 +36,7 @@ let Links = [
       <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <a
           href="#book"
-          class="text-white tracking-widest bg-green-500 hover:bg-green-600 hover:shadow-green-500/50 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 md:flex lg:flex font-medium rounded-lg text-sm md:text-base px-4 py-3 md:w-34 text-center transition-all duration-200 mr-4"
+          class="text-white tracking-widest bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 hover:shadow-lg hover:shadow-green-500/50 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 font-semibold rounded-xl text-sm md:text-base px-6 py-3 text-center transition-all duration-300 shadow-md mr-4"
         >
           Book Event
         </a>
