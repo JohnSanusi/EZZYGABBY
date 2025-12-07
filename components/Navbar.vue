@@ -10,6 +10,7 @@ const toggleNavOpen = computed(() => {
     navOpen.value = false;
   }
 });
+
 let Links = [
   { name: "About", to: "/#about" },
   { name: "Services", to: "/#services" },
@@ -17,72 +18,103 @@ let Links = [
   { name: "Contact", to: "/#contact" },
 ];
 </script>
+
 <template>
   <nav
-    class="bg-black/20 fixed w-full z-20 top-0 start-0 shadow-md backdrop-blur-md"
+    class="bg-slate-950/80 backdrop-blur-xl fixed w-full z-50 top-0 border-b border-slate-800/50 shadow-lg shadow-slate-950/50"
     data-aos="fade-down"
     data-aos-duration="1000"
   >
-    <div
-      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2"
-    >
-      <NuxtLink to="" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img
-          src="/logo.png"
-          class="w-25 h-25 md:w-25 md:h-25 lg:w-30 lg:h-30"
-          alt=""
-        />
-      </NuxtLink>
-      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        <a
-          href="#book"
-          class="text-white tracking-widest bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 hover:shadow-lg hover:shadow-green-500/50 cursor-pointer focus:ring-4 focus:outline-none focus:ring-green-700 font-semibold rounded-xl text-sm md:text-base px-6 py-3 text-center transition-all duration-300 shadow-md mr-4"
-        >
-          Book Event
-        </a>
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <NuxtLink to="/" class="flex items-center gap-3 group">
+          <img
+            src="/logo.png"
+            class="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
+            alt="EzzyGabby Logo"
+          />
+          <div class="hidden sm:block">
+            <div class="text-white font-bold text-xl group-hover:text-emerald-400 transition-colors duration-300">
+              EzzyGabby
+            </div>
+            <div class="text-emerald-400 text-xs tracking-wider">
+              Photography
+            </div>
+          </div>
+        </NuxtLink>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-8">
+          <ul class="flex items-center gap-8">
+            <li v-for="link in Links" :key="link.to">
+              <a
+                :href="link.to"
+                class="text-slate-300 hover:text-emerald-400 font-medium transition-colors duration-300 relative group"
+              >
+                {{ link.name }}
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300"></span>
+              </a>
+            </li>
+          </ul>
+
+          <!-- CTA Button -->
+          <a
+            href="#book"
+            class="group relative px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/50 hover:-translate-y-0.5"
+          >
+            <span class="relative z-10">Book Event</span>
+            <span class="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
         <button
           type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-100 rounded-lg md:hidden bg-slate-400 outline-none ring-2 ring-gray-600"
-          aria-controls="navbar-sticky"
-          aria-expanded="false"
+          class="md:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500 text-slate-300 hover:text-emerald-400 transition-all duration-300"
+          aria-label="Toggle menu"
           @click="toggleNavOpen"
         >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
+          <i v-if="!navOpen" class="pi pi-bars text-xl"></i>
+          <i v-else class="pi pi-times text-xl"></i>
         </button>
       </div>
-      <div
-        class="items-center justify-between w-full md:flex md:w-auto md:order-1"
-        id="navbar-sticky"
-        :class="navOpen ? 'flex' : 'hidden'"
+
+      <!-- Mobile Navigation -->
+      <transition
+        enter-active-class="transition-all duration-300 ease-out"
+        enter-from-class="opacity-0 -translate-y-4"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition-all duration-200 ease-in"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 -translate-y-4"
       >
-        <ul
-          class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0"
+        <div
+          v-if="navOpen"
+          class="md:hidden mt-6 pb-4 border-t border-slate-800/50 pt-6"
         >
-          <li v-for="link in Links" :key="link.to">
-            <a
-              @click="toggleNavOpen"
-              :href="link.to"
-              class="block py-2 px-2 text-white rounded-sm hover:text-green-500 md:p-0"
-              >{{ link.name }}</a
-            >
-          </li>
-        </ul>
-      </div>
+          <ul class="space-y-4">
+            <li v-for="link in Links" :key="link.to">
+              <a
+                @click="toggleNavOpen"
+                :href="link.to"
+                class="block px-4 py-3 text-slate-300 hover:text-emerald-400 hover:bg-slate-800/50 rounded-xl font-medium transition-all duration-300"
+              >
+                {{ link.name }}
+              </a>
+            </li>
+          </ul>
+          
+          <!-- Mobile CTA -->
+          <a
+            href="#book"
+            @click="toggleNavOpen"
+            class="mt-6 w-full block text-center px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/50"
+          >
+            Book Event
+          </a>
+        </div>
+      </transition>
     </div>
   </nav>
 </template>
