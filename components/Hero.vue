@@ -10,14 +10,14 @@ const images = [
 </script>
 
 <template>
-  <section class="relative min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+  <section class="relative h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
     <!-- Ambient background effects -->
     <div class="absolute inset-0 opacity-30">
       <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-emerald-500/20 blur-3xl rounded-full"></div>
       <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-green-500/10 blur-3xl rounded-full"></div>
     </div>
     
-    <div class="relative max-w-7xl mx-auto px-6 py-20 lg:py-28">
+    <div class="relative max-w-7xl mx-auto px-6 h-full flex items-center">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         
         <!-- Text Content -->
@@ -88,7 +88,7 @@ const images = [
           <!-- Glow effect behind grid -->
           <div class="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-green-500/20 blur-3xl opacity-30 animate-pulse"></div>
           
-          <div class="relative grid grid-cols-6 grid-rows-6 gap-3 h-[500px] lg:h-[600px]">
+          <div class="relative grid grid-cols-6 grid-rows-6 gap-3 h-[450px] lg:h-[550px]">
             <!-- Large featured image - top left -->
             <div class="col-span-4 row-span-4 rounded-2xl overflow-hidden group relative bg-slate-800">
               <NuxtImg
@@ -147,5 +147,5 @@ const images = [
     <!-- Bottom fade -->
     <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 to-transparent"></div>
   </section>
-</template>  
+</template>
 
